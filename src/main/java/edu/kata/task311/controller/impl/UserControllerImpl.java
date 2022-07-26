@@ -5,6 +5,7 @@ import edu.kata.task311.entity.User;
 import edu.kata.task311.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -18,7 +19,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public String create(ModelMap modelMap) {
+    public String pageCreate(ModelMap modelMap) {
         modelMap.addAttribute("user", new User());
         return "user_manage";
     }
@@ -30,7 +31,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public String preUpdate(ModelMap modelMap, Long id) {
+    public String pageUpdate(ModelMap modelMap, Long id) {
         modelMap.addAttribute("user", userService.findById(id));
         return "user_manage";
     }
